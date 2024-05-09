@@ -17,9 +17,7 @@ function ProductCard() {
               Some quick example text to build on the card title and make up the
               bulk of the cards content.
             </p>
-            <a href="#" className="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link className="btn btn-primary">Go somewhere</Link>
           </div>
         </div>
       </Link>

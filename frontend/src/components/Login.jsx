@@ -1,41 +1,61 @@
+import { useState } from "react";
+
 function Login() {
+  const [inputValues, setInputValues] = useState({});
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputValues((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(inputValues);
+    setInputValues({});
+  };
   return (
-    <div
-      className="modal fade"
-      id="loginModal"
-      tabIndex={-1}
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h1 className="modal-title fs-5" id="exampleModalLabel">
-              Login
-            </h1>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            />
-          </div>
-          <div className="modal-body">...</div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Save changes
-            </button>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-6 mx-auto">
+            <form onSubmit={handleSubmit}>
+              <h1 className="fw-semibold text-center py-md-4 py-3">Login</h1>
+              <div className="card shadow border-0 p-5">
+                <div className="mb-3">
+                  <label htmlFor="" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="form-control"
+                    name="email"
+                    onChange={handleChange}
+                    value={inputValues.email || ""}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="" className="form-label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    className="form-control"
+                    name="password"
+                    onChange={handleChange}
+                    value={inputValues.password || ""}
+                  />
+                </div>
+                <button type="submit" className="btn btn-dark">
+                  Login
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

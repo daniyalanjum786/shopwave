@@ -1,6 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+
 function Navbar() {
   return (
     <>
@@ -30,24 +29,12 @@ function Navbar() {
               </li>
             </ul>
             <div className="d-flex">
-              <button
-                className="btn btn-outline-dark me-2"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
+              <Link to="/login" className="btn btn-dark me-3">
                 Login
-              </button>
-              {/* Login Modal */}
-              <Login />
-              <button
-                className="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#registerModal"
-              >
+              </Link>
+              <Link to="/register" className="btn btn-warning">
                 Register
-              </button>
-              {/* Register Modal */}
-              <Register />
+              </Link>
             </div>
           </div>
         </div>
