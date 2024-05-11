@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ function Login() {
   const [inputValues, setInputValues] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -23,7 +24,7 @@ function Login() {
         if (response.success == true) {
           toast.success(response.message, { autoClose: 2000 });
           setTimeout(() => {
-            navigate("/");
+            window.location.href = "/";
           }, 1500);
         } else {
           toast.error(response.message, { autoClose: 2000 });
@@ -37,6 +38,12 @@ function Login() {
       });
     setInputValues({});
   };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <>

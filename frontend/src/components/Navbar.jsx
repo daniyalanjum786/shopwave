@@ -17,7 +17,7 @@ function Navbar() {
       .then((response) => {
         window.localStorage.removeItem("user");
         toast.success(response.data.message, { autoClose: 2000 });
-        window.location.reload();
+        window.location.href = "/";
       })
       .catch((error) => error.response.data);
   };
