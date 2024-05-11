@@ -8,8 +8,8 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <>
-      <ToastContainer />
       <BrowserRouter>
+        <ToastContainer />
         <Header />
         <Routes>
           <Route index element={<Home />} />
