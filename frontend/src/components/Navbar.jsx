@@ -17,7 +17,9 @@ function Navbar() {
       .then((response) => {
         window.localStorage.removeItem("user");
         toast.success(response.data.message, { autoClose: 2000 });
-        window.location.href = "/";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       })
       .catch((error) => error.response.data);
   };
@@ -42,8 +44,13 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">
+                <NavLink className="nav-link fw-semibold" to="/">
                   Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link fw-semibold" to="/shop">
+                  Shop
                 </NavLink>
               </li>
             </ul>
@@ -58,14 +65,25 @@ function Navbar() {
                       data-bs-display="static"
                       aria-expanded="false"
                     >
-                      Profile
+                      {user.name}
                     </button>
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
                         <button className="dropdown-item" type="button">
-                          profile
+                          Profile
                         </button>
                       </li>
+                      {user.role === 1 ? (
+                        <li>
+                          <Link
+                            to="/admin"
+                            className="dropdown-item"
+                            type="button"
+                          >
+                            Dashboard
+                          </Link>
+                        </li>
+                      ) : null}
                       <li>
                         <button
                           onClick={handleLogout}

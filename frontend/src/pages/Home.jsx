@@ -8,18 +8,7 @@ function Home() {
       <main>
         <div className="container">
           <div className="row justify-content-evenly">
-            <div className="col-xl-3 col-lg-4 col-6 mb-3">
-              <ProductCard />
-            </div>
-            <div className="col-xl-3 col-lg-4 col-6 mb-3">
-              <ProductCard />
-            </div>
-            <div className="col-xl-3 col-lg-4 col-6 mb-3">
-              <ProductCard />
-            </div>
-            <div className="col-xl-3 col-lg-4 col-6 mb-3">
-              <ProductCard />
-            </div>
+            <div className="col-xl-3 col-lg-4 col-6 mb-3"></div>
           </div>
         </div>
       </main>
